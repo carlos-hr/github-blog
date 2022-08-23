@@ -1,8 +1,11 @@
+import { LogoIcon } from "../../assets/icons/logo";
+import { HeaderContainer } from "./styled";
+
 const Header = () => {
   return (
-    <div>
-      <h3>Header</h3>
-    </div>
+    <HeaderContainer>
+      <LogoIcon />
+    </HeaderContainer>
   );
 };
 
