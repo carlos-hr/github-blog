@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useIssues } from "../../../hooks/useIssues";
+import { dateFormatter } from "../../../utils/formatter";
 import { PostContainer, PostContent } from "./styled";
 
 interface PostCardProps {
@@ -7,6 +8,7 @@ interface PostCardProps {
     number: number;
     title: string;
     body: string;
+    created_at: string;
   };
 }
 
@@ -24,7 +26,7 @@ const PostCard = ({ issue }: PostCardProps) => {
       <PostContent role="link" onClick={() => onClickIssue(issue.number)}>
         <div>
           <h3>{issue.title}</h3>
-          <p>Há 1 dia</p>
+          <p>{dateFormatter(issue.created_at)}</p>
         </div>
         <p>{issue.body}</p>
       </PostContent>

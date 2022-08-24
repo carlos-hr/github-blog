@@ -18,6 +18,9 @@ export const PostContent = styled.div`
 
     p {
       font-size: 0.875rem;
+      ::first-letter {
+        text-transform: capitalize;
+      }
     }
   }
 
