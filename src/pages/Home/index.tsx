@@ -1,7 +1,9 @@
+import { ProfileBio } from "../../components";
+
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <ProfileBio />
     </div>
   );
 };
