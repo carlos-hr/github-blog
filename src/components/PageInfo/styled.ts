@@ -71,6 +71,10 @@ export const SectionInfoContainer = styled.div`
       display: flex;
       align-items: center;
       gap: 0.25rem;
+
+      time::first-letter {
+        text-transform: capitalize;
+      }
     }
 
     @media (max-width: 768px) {

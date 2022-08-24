@@ -20,7 +20,7 @@ const ProfileInfo = () => {
           <SectionInfoContainer>
             <div>
               <h2>{profileData.name}</h2>
-              <a href={profileData.url} target="_blank" rel="noreferrer">
+              <a href={profileData.html_url} target="_blank" rel="noreferrer">
                 Github
                 <BsBoxArrowUpRight size={12} />
               </a>
