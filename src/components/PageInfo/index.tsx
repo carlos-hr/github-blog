@@ -56,7 +56,7 @@ const PageInfo = () => {
               <IoIosArrowBack size={16} /> Voltar
             </Link>
             <a href="https://www.github.com/carlos-hr" target="_blank">
-              Github
+              Ver no github
               <BsBoxArrowUpRight size={12} />
             </a>
           </div>
