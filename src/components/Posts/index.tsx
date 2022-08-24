@@ -15,9 +15,15 @@ const Post = () => {
     setInputValue(e.target.value);
   }
 
-  const filteredIssues = issues.filter((issue) =>
-    issue.title.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredIssues = issues.filter((issue) => {
+    const search = inputValue.toLowerCase();
+    const { title, body } = issue;
+
+    return (
+      title.toLowerCase().includes(search) ||
+      body.toLowerCase().includes(search)
+    );
+  });
 
   return (
     <>
