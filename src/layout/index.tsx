@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import { Header, PageInfo } from "../components";
+import { OutletContainer } from "./styled";
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <PageInfo />
-      <Outlet />
+      <OutletContainer>
+        <PageInfo />
+        <Outlet />
+      </OutletContainer>
     </>
   );
 };

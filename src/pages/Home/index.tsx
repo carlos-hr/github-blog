@@ -1,11 +1,10 @@
-import { Posts, PageInfo } from "../../components";
-import { HomeContainer } from "./styled";
+import { Posts } from "../../components";
 
 const Home = () => {
   return (
-    <HomeContainer>
+    <>
       <Posts />
-    </HomeContainer>
+    </>
   );
 };
 
