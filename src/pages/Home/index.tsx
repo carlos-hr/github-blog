@@ -4,7 +4,6 @@ import { HomeContainer } from "./styled";
 const Home = () => {
   return (
     <HomeContainer>
-      <PageInfo />
       <Posts />
     </HomeContainer>
   );

@@ -8,13 +8,12 @@ import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { FiUsers } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiConversation } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-interface PageInfoProps {
-  isProfileInfo?: boolean;
-}
+const PageInfo = () => {
+  const { pathname } = useLocation();
+  const isProfileInfo = pathname === "/";
 
-const PageInfo = ({ isProfileInfo = false }: PageInfoProps) => {
   return (
     <ProfileBioContainer>
       {isProfileInfo ? (
