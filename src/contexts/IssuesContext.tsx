@@ -19,25 +19,31 @@ interface ProfileData {
   followers: number;
   login: string;
   name: string;
-  url: string;
+  html_url: string;
 }
 
-interface Issues {
+interface Issue {
   body: string;
   created_at: string;
+  html_url: string;
+  id: string;
   title: string;
+  number: number;
 }
 
 interface IssuesContextData {
   profileData: ProfileData | null;
-  issues: Issues[];
+  issues: Issue[];
+  issue: Issue | null;
+  fetchPageIssue: (number: number) => Promise<void>;
 }
 
 export const IssuesContext = createContext({} as IssuesContextData);
 
 export const IssuesProvider = ({ children }: IssuesProviderProps) => {
   const [profileData, setProfileData] = useState<ProfileData | null>(null);
-  const [issues, setIssues] = useState<Issues[]>([]);
+  const [issues, setIssues] = useState<Issue[]>([]);
+  const [issue, setIssue] = useState<Issue | null>(null);
 
   const fetchProfileData = useCallback(async () => {
     const response = await api.get(`/users/${owner}`).then((res) => res.data);
@@ -53,13 +59,23 @@ export const IssuesProvider = ({ children }: IssuesProviderProps) => {
     setIssues(response);
   }, []);
 
+  const fetchPageIssue = async (number: number) => {
+    const response = await api
+      .get(`/repos/${owner}/${repo}/issues/${number}`)
+      .then((res) => res.data);
+
+    setIssue(response);
+  };
+
   useEffect(() => {
     fetchProfileData();
     fetchIssues();
   }, [fetchIssues, fetchProfileData]);
 
   return (
-    <IssuesContext.Provider value={{ profileData, issues }}>
+    <IssuesContext.Provider
+      value={{ profileData, issues, issue, fetchPageIssue }}
+    >
       {children}
     </IssuesContext.Provider>
   );

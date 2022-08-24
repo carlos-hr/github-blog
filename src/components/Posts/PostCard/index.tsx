@@ -1,44 +1,32 @@
 import { useNavigate } from "react-router-dom";
+import { useIssues } from "../../../hooks/useIssues";
 import { PostContainer, PostContent } from "./styled";
 
-const PostCard = () => {
+interface PostCardProps {
+  issue: {
+    number: number;
+    title: string;
+    body: string;
+  };
+}
+
+const PostCard = ({ issue }: PostCardProps) => {
   const navigate = useNavigate();
+  const { fetchPageIssue } = useIssues();
+
+  function onClickIssue(number: number) {
+    fetchPageIssue(number);
+    navigate(`/post/${number}`);
+  }
+
   return (
     <PostContainer>
-      <PostContent role="link" onClick={() => navigate("post")}>
+      <PostContent role="link" onClick={() => onClickIssue(issue.number)}>
         <div>
-          <h3>JavaScript data types and data structures</h3>
+          <h3>{issue.title}</h3>
           <p>Há 1 dia</p>
         </div>
-        <p>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in Programming languages
-          all have built-in data structures, but these often differ from one
-          language to another. This article attempts to list the built-in data
-          structures available in Programming languages all have built-in data
-          structures, but these often differ from one language to another. This
-          article attempts to list the built-in data structures available in
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in Programming languages
-          all have built-in data structures, but these often differ from one
-          language to another. This article attempts to list the built-in data
-          structures available in Programming languages all have built-in data
-          structures, but these often differ from one language to another. This
-          article attempts to list the built-in data structures available in
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in Programming languages
-          all have built-in data structures, but these often differ from one
-          language to another. This article attempts to list the built-in data
-          structures available in Programming languages all have built-in data
-          structures, but these often differ from one language to another. This
-          article attempts to list the built-in data structures available in
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in
-        </p>
+        <p>{issue.body}</p>
       </PostContent>
     </PostContainer>
   );
