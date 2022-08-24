@@ -14,7 +14,7 @@ export const PostContent = styled.div`
   div {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 
     p {
       font-size: 0.875rem;
@@ -27,5 +27,13 @@ export const PostContent = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+  }
+
+  :hover {
+    cursor: pointer;
+
+    > div {
+      text-decoration: underline;
+    }
   }
 `;
