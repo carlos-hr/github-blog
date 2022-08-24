@@ -1,10 +1,12 @@
-import { ProfileBio } from "../../components";
+import { Posts, ProfileBio } from "../../components";
+import { HomeContainer } from "./styled";
 
 const Home = () => {
   return (
-    <div>
+    <HomeContainer>
       <ProfileBio />
-    </div>
+      <Posts />
+    </HomeContainer>
   );
 };
 
