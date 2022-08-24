@@ -27,7 +27,7 @@ export const ProfileBioContainer = styled.div`
   }
 `;
 
-export const UserInfoContainer = styled.div`
+export const SectionInfoContainer = styled.div`
   width: 100%;
 
   div {
@@ -89,6 +89,31 @@ export const UserInfoContainer = styled.div`
 
     h2 {
       padding-top: 1.25rem;
+    }
+  }
+`;
+
+export const SkeletonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: fit-content;
+    padding: 1rem 2rem;
+  }
+
+  > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    width: 100%;
+    gap: 0.5rem;
+
+    span {
+      height: 100%;
     }
   }
 `;
