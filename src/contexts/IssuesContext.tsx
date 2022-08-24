@@ -29,6 +29,11 @@ interface Issue {
   id: string;
   title: string;
   number: number;
+  user: {
+    html_url: string;
+    login: string;
+  };
+  comments: number;
 }
 
 interface IssuesContextData {
@@ -59,13 +64,13 @@ export const IssuesProvider = ({ children }: IssuesProviderProps) => {
     setIssues(response);
   }, []);
 
-  const fetchPageIssue = async (number: number) => {
+  const fetchPageIssue = useCallback(async (number: number) => {
     const response = await api
       .get(`/repos/${owner}/${repo}/issues/${number}`)
       .then((res) => res.data);
 
     setIssue(response);
-  };
+  }, []);
 
   useEffect(() => {
     fetchProfileData();

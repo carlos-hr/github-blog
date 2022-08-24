@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Oval } from "react-loader-spinner";
 import { useIssues } from "../../hooks/useIssues";
 import { defaultTheme } from "../PageInfo/components/ProfileInfo";
@@ -7,16 +8,32 @@ import { LoaderContainer, PostsContainer } from "./styled";
 
 const Post = () => {
   const { issues } = useIssues();
+  const [inputValue, setInputValue] = useState("");
+  const publishs = issues.length;
+
+  function onChangeInputValue(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+
+  const filteredIssues = issues.filter((issue) =>
+    issue.title.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
   return (
     <>
-      <Search />
       {issues.length > 0 ? (
-        <PostsContainer>
-          {issues.map((issue) => (
-            <PostCard key={issue.id} issue={issue} />
-          ))}
-        </PostsContainer>
+        <>
+          <Search
+            publishs={publishs}
+            onChangeInputValue={onChangeInputValue}
+            inputValue={inputValue}
+          />
+          <PostsContainer>
+            {filteredIssues.map((issue) => (
+              <PostCard key={issue.id} issue={issue} />
+            ))}
+          </PostsContainer>
+        </>
       ) : (
         <LoaderContainer>
           <Oval

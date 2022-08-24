@@ -1,13 +1,23 @@
 import { SearchContainer } from "./styled";
 
-const Search = () => {
+interface SearchProps {
+  publishs: number;
+  inputValue: string;
+  onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Search = ({ publishs, inputValue, onChangeInputValue }: SearchProps) => {
   return (
     <SearchContainer>
       <span>
         Publicações
-        <p>6 publicaçções</p>
+        <p>{publishs} publicaçções</p>
       </span>
-      <input placeholder="Buscar conteúdo" />
+      <input
+        placeholder="Buscar conteúdo"
+        onChange={onChangeInputValue}
+        value={inputValue}
+      />
     </SearchContainer>
   );
 };
