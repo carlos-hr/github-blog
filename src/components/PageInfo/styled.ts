@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const ProfileBioContainer = styled.div`
   display: flex;
-  max-width: 1120px;
-  margin: auto;
   background-color: ${(props) => props.theme.base_profile};
   height: 13.25rem;
   margin-top: -6.625rem;
@@ -20,6 +18,12 @@ export const ProfileBioContainer = styled.div`
   }
   ul {
     list-style: none;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: fit-content;
+    padding: 1rem 2rem;
   }
 `;
 
@@ -67,6 +71,12 @@ export const UserInfoContainer = styled.div`
       display: flex;
       align-items: center;
       gap: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
   }
 

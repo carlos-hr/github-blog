@@ -1,10 +1,10 @@
 import PostCard from "./PostCard";
 import Search from "./Search";
-import { MainContainer, PostsContainer } from "./styled";
+import { PostsContainer } from "./styled";
 
 const Post = () => {
   return (
-    <MainContainer>
+    <>
       <Search />
       <PostsContainer>
         <PostCard />
@@ -16,7 +16,7 @@ const Post = () => {
         <PostCard />
         <PostCard />
       </PostsContainer>
-    </MainContainer>
+    </>
   );
 };
 
