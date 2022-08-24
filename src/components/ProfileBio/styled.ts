@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ProfileBioContainer = styled.div`
+  display: flex;
   max-width: 1120px;
   margin: auto;
-  display: flex;
   background-color: ${(props) => props.theme.base_profile};
   height: 13.25rem;
   margin-top: -6.625rem;
