@@ -24,6 +24,8 @@ export const ProfileBioContainer = styled.div`
 `;
 
 export const UserInfoContainer = styled.div`
+  width: 100%;
+
   div {
     display: flex;
     justify-content: space-between;
@@ -65,6 +67,18 @@ export const UserInfoContainer = styled.div`
       display: flex;
       align-items: center;
       gap: 0.25rem;
+    }
+  }
+
+  &.post-info {
+    a {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    h2 {
+      padding-top: 1.25rem;
     }
   }
 `;

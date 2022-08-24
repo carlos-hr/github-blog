@@ -1,10 +1,10 @@
-import { Posts, ProfileBio } from "../../components";
+import { Posts, PageInfo } from "../../components";
 import { HomeContainer } from "./styled";
 
 const Home = () => {
   return (
     <HomeContainer>
-      <ProfileBio />
+      <PageInfo />
       <Posts />
     </HomeContainer>
   );
