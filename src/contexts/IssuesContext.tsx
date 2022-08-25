@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useLocation } from "react-router-dom";
 import { owner, repo } from "../constants/repoData";
 import { api } from "../services/api";
 
@@ -49,6 +50,7 @@ export const IssuesProvider = ({ children }: IssuesProviderProps) => {
   const [profileData, setProfileData] = useState<ProfileData | null>(null);
   const [issues, setIssues] = useState<Issue[]>([]);
   const [issue, setIssue] = useState<Issue | null>(null);
+  const { pathname } = useLocation();
 
   const fetchProfileData = useCallback(async () => {
     const response = await api.get(`/users/${owner}`).then((res) => res.data);
@@ -73,9 +75,11 @@ export const IssuesProvider = ({ children }: IssuesProviderProps) => {
   }, []);
 
   useEffect(() => {
-    fetchProfileData();
-    fetchIssues();
-  }, [fetchIssues, fetchProfileData]);
+    if (pathname === "/") {
+      fetchProfileData();
+      fetchIssues();
+    }
+  }, [fetchIssues, fetchProfileData, pathname]);
 
   return (
     <IssuesContext.Provider
